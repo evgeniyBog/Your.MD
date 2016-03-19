@@ -1,4 +1,4 @@
-package com.yourmd.search;
+package com.yourmd.search.service;
 
 import com.yourmd.search.model.DictionaryWord;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class SearchService {
-
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
