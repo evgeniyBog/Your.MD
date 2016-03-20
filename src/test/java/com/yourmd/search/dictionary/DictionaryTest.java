@@ -36,8 +36,8 @@ public class DictionaryTest extends TestCase {
 
     @Test
     public void testSingleton() {
-        Dictionary dict1 = Dictionary.getInstance();
-        Dictionary dict2 = Dictionary.getInstance();
+        Dictionary dict1 = Dictionary.INSTANCE;
+        Dictionary dict2 = Dictionary.INSTANCE;
         assertEquals(dict1, dict2);
         assertEquals(dict1, dictionary);
     }

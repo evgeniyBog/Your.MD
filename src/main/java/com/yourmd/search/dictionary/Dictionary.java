@@ -17,34 +17,16 @@ import java.util.Objects;
 /**
  * @author Evgeniy Bogdanov (ebogdanov@gmail.com).
  */
-public final class Dictionary {
-    private static final Logger logger = LoggerFactory.getLogger(Dictionary.class);
-    private static final Dictionary instance = new Dictionary();
+public enum Dictionary {
+    INSTANCE;
 
+    private static Logger logger;
     private static final String FILE_PATH = "src/main/resources/phrases";
 
-    private final static Map<Integer, String> dictionary = new HashMap<>();
+    private static Map<Integer, String> dictionary;
 
-    /**
-     * Static initializer
-     */
-    static {
+    Dictionary() {
         loadDictionaryFromFile();
-    }
-
-    private Dictionary() {
-        if (instance != null) {
-            throw new IllegalStateException("Already instantiated");
-        }
-    }
-
-    /**
-     * Returns an instance of the class
-     *
-     * @return singleton instance of Dictionary
-     */
-    public static Dictionary getInstance() {
-        return instance;
     }
 
     /**
@@ -53,6 +35,8 @@ public final class Dictionary {
      */
     private static void loadDictionaryFromFile() {
         Instant start = Instant.now();
+        logger = LoggerFactory.getLogger(Dictionary.class);
+        dictionary = new HashMap<>();
         logger.info("Starting to cache dictionary from " + FILE_PATH);
         Path dictionaryPath = Paths.get(FILE_PATH).toAbsolutePath();
         try (BufferedReader br = Files.newBufferedReader(dictionaryPath)) {
@@ -94,6 +78,27 @@ public final class Dictionary {
      */
     public String getValue(Integer index) {
         return dictionary.get(index);
+    }
+
+    /**
+     * This method returns deep copy of dictionary (for indexing purpose)
+     *
+     * @return Map of id and words. deep copy of original map
+     */
+    public Map<Integer, String> getDictionary() {
+        Map<Integer, String> copyMap = new HashMap<>();
+        for (Map.Entry<Integer, String> originalEntry : dictionary.entrySet()) {
+            copyMap.put(originalEntry.getKey(), originalEntry.getValue());
+        }
+        return copyMap;
+    }
+
+    /**
+     * Retrieve size of dictionary
+     * @return - size of dictionary
+     */
+    public Long getSize() {
+        return new Long(dictionary.size());
     }
 
 }

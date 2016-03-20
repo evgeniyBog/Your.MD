@@ -9,3 +9,13 @@ Pre-requirements:
 
 Instructions:
 Elasticsearch server version should be 1.7.5 (Spring Boot doesnt support 2.x versions as of today)
+
+
+Running application
+1. Execute from command line: gradlew bootRun
+2. 
+
+
+TODO: exception Handling
+TODO: ehcache support
+TODO: how to generate documentation
