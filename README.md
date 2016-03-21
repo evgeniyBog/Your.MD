@@ -1,5 +1,8 @@
 # Your.MD Dictionary Search
 
+##Comments
+Search for words in the query is done using [Elasticsearch Percolator](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-percolate.html)
+
 ##Pre-requirements:
 
 1.	Java 8
@@ -18,9 +21,13 @@ Java, Spring boot, Gradle, Elasticsearch, Ehcache, Logback
     - http://localhost:8080/search?query=I have a sore throat and headache.
 
 ##Implementation details:
-Indexing appears once on first application startup (if ElasticSearch is running).
+Indexing appears once on first application startup (if ElasticSearch is running). If index exists, and dictionary has the same number of words no indexing would occure. Words are indexed as [percolator queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-percolate.html#_indexing_percolator_queries).
+
 Dictionary is cached from file into memory HashMap, and used by service to: a) Add words into Elasticsearch index b) Find word by id from index.
+
 Each query from user is cached using Ehcache. So no index hit would occure in case of repeating query.
+
+Search for query occures on the Elasticsearch node using [Percolate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-percolate.html#_percolate_api)
 
 Note: Elasticsearch was started AFTER service start-up, indexing will occure on first search
 
