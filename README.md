@@ -26,21 +26,21 @@ Note: Elasticsearch was started AFTER service start-up, indexing will occure on 
 
 Note: Sense tool could be installed as plugin for Chrome to work with index. Useful command:
 - Searching
-'''
+```
 GET yourmd/words/_percolate
 {
     "doc" : {
         "message" : "What is Hypertension?"
     }
 }
-'''
+```
 
 - Return index statistics
-''' 
+``` 
 GET yourmd/_stats
-'''
+```
 
 - Delete index
-'''
+```
 DELETE yourmd
-'''
+```
