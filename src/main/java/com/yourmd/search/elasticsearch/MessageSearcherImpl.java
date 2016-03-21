@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.PropertySource;
 
 import java.io.IOException;
@@ -32,6 +34,7 @@ public class MessageSearcherImpl implements MessageSearcher {
     Dictionary dictionary;
 
     @Override
+    @Cacheable("dictionaryCache")
     public List<String> searchMatches(String message) {
         logger.info("Searching index " + indexName + " for message text: " + message);
         PercolateResponse response = executePercolatorSearch(message);

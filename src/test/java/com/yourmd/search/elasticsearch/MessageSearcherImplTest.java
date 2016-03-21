@@ -35,7 +35,7 @@ public class MessageSearcherImplTest extends TestCase {
             //Not the best way, but health status from Elasticsearch doesn't return if indexing have finished.
             //Had to introduce sleep for 3 seconds, while all the documents will be indexed.
             try {
-                TimeUnit.SECONDS.sleep(3);
+                TimeUnit.SECONDS.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.yourmd.search.dictionary.DictionaryTest" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="EPGBLONW0068" time="0.0">
-  <properties/>
-  <system-out><![CDATA[2016-03-21 00:01:07.316  INFO   --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.yourmd.search.dictionary.DictionaryTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2016-03-21 00:01:07.330  INFO   --- [    Test worker] o.s.t.c.s.DefaultTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2016-03-21 00:01:07.345  INFO   --- [    Test worker] o.s.t.c.s.DefaultTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4434784f, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@528bb3e2, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6e7d9fa1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1ec6584e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@79d7bdd9, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@764c05a2]
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

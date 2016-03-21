@@ -1,4 +1,5 @@
+build/*
+build/classes/main/com/yourmd/search/Application.class
 .gradle/
 .idea/
 Your.MD.iml
-build/
