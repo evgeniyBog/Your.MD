@@ -9,7 +9,6 @@
 Java, Spring boot, Gradle, Elasticsearch, Ehcache, Logback
 
 ##Running application and tests
-Elasticsearch server version should be 1.7.5 (Spring Boot doesnt support 2.x versions as of today)
 
 1. Start Elasticsearch 1.7.5 by running [ELASTIC_HOME]/bin/elasticsearch
 2. Run application
