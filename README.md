@@ -1,4 +1,4 @@
-# Your.MD Dictionary Search
+# Dictionary Search
 
 ##Comments
 Search for words in the query is done using [Elasticsearch Percolator](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-percolate.html). This is a great tool to percolate message through queries, and return those that have matched. This allows costumise queries, add filters and the most important - scale this solution.
