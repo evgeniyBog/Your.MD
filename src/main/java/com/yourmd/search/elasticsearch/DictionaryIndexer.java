@@ -33,6 +33,14 @@ public interface DictionaryIndexer {
 
 
     /**
+     * check if index Exists
+     *
+     * @return - true if index exists, false if not
+     */
+    Boolean indexExists();
+
+
+    /**
      * Returns amount of documents in the index.
      *
      * @return - number of documents in Index

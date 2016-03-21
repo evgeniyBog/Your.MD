@@ -19,3 +19,4 @@ Running application
 TODO: exception Handling
 TODO: ehcache support
 TODO: how to generate documentation
+TODO: integration tests section

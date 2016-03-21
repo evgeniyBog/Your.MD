@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -53,9 +54,10 @@ public final class DictionaryIndexerImpl implements DictionaryIndexer {
     public DictionaryIndexerImpl() {
     }
 
+    @PostConstruct
     @Override
     public Boolean createIndex() {
-        if (getIndexedDocuments().equals(dictionary.getSize())) {
+        if (indexExists() && getIndexedDocuments().equals(dictionary.getSize())) {
             return false;
         }
 
@@ -94,6 +96,11 @@ public final class DictionaryIndexerImpl implements DictionaryIndexer {
     public void deleteIndex() {
         client.admin().indices().prepareDelete(indexName)
                 .setIndicesOptions(IndicesOptions.fromOptions(true, true, true, false)).get();
+    }
+
+    @Override
+    public Boolean indexExists() {
+        return client.admin().indices().prepareExists(indexName).execute().actionGet().isExists();
     }
 
     @Override

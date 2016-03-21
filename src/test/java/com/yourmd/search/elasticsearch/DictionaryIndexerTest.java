@@ -16,6 +16,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.validation.constraints.AssertTrue;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -43,22 +44,15 @@ public class DictionaryIndexerTest extends TestCase {
 
     @Before
     public void before() throws IOException {
-        Boolean created = dictionaryIndexer.createIndex();
-
-        if (created) {
-            //Not the best way, but health status from Elasticsearch doesn't return if indexing have finished.
-            //Had to introduce sleep for 3 seconds, while all the documents will be indexed.
-            try {
-                TimeUnit.SECONDS.sleep(3);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        createIndexWithWait();
     }
 
     @Test
     public void testIndexExists() {
-        Assert.assertTrue(client.admin().indices().prepareExists(indexName).execute().actionGet().isExists());
+        dictionaryIndexer.deleteIndex();
+        Assert.assertFalse(dictionaryIndexer.indexExists());
+        createIndexWithWait();
+        Assert.assertTrue(dictionaryIndexer.indexExists());
     }
 
     @Test
@@ -70,6 +64,20 @@ public class DictionaryIndexerTest extends TestCase {
     @Test
     public void testDelete() {
         dictionaryIndexer.deleteIndex();
+    }
+
+    private void createIndexWithWait() {
+        Boolean created = dictionaryIndexer.createIndex();
+
+        if (created) {
+            //Not the best way, but health status from Elasticsearch doesn't return if indexing have finished.
+            //Had to introduce sleep for 3 seconds, while all the documents will be indexed.
+            try {
+                TimeUnit.SECONDS.sleep(3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
